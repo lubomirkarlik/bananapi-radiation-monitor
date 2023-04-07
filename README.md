@@ -26,4 +26,4 @@ In this configuration you only need to provide 5 volt power to one of the two bo
 
 ## Software setup
 
-You have two possibilities. First one (preffered) is download prepared image with presetted values. Or install some debian based image to Your BPI-M2 zero , install needed software components and run my python application. First option is easyest way.
+You have two options. The first (preferred) is to download a prepared image with preset values. Or install some debian based image on your BPI-M2 zero , install the necessary software components and run my python application, stored in src directory. The first option is the easiest.
