@@ -63,4 +63,15 @@ login screen appear. You can log in as user *admin* with password *admin* for fu
 Some of user parameters can be changed in */home/pi/geiger/config.py* file. You can change measurement interval *geiger_measure_int* . Stored values is in seconds. Divider is value represent relation between CPM (count impulses per minute) value and uSiviert value and depend on used type of geiger tube. *geiger_gpio_line* is set to 6 and represent GPIO port on BPI-M2. You can change it under your needs, but keep in mind, **that port you choose must support hardware interrupt.**
 
 
-### How to individualy install :
+### How to install manually:
+
+* Take BPI-M2 ZERO or simmilar (I have probed and tested it only on BananaPi M2 ZERO)
+* install debian Linux (Armbian, Ubuntu, ...)
+* install InfluxDb
+* install grafana-server
+* download \*.py files from *src* directory
+* change content of configuration file \*.py files (config.py) under your database and hardware settings
+* run application with *python3 counter.py*
+
+
+
