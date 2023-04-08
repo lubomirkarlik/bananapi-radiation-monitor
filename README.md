@@ -34,4 +34,9 @@ In this configuration you only need to provide 5 volt power to one of the two bo
 
 You have two options. The first (preferred) is to download a prepared image with preset values. Or install some debian based image on your BPI-M2 zero , install the necessary software components and run my python application, stored in src directory. The first option is the easiest.
 
-* how to use image:
+### How to use image:
+
+You need some suitable sotware to upload the img to the sd card, for example [BalenaEtcher](https://www.balena.io/etcher), or [Win32DiskImager](https://sourceforge.net/projects/win32diskimager/), or something similar, or the dd command in Linux CLI:
+
+  sudo dd if=geiger.img of=/dev/mmcblkx      #  mmcblkx must be repalced with appropriate name of sdcard on Your system
+
