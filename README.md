@@ -19,6 +19,7 @@ A simple Python application to measure and record background radiation in your a
 ## Hardware connection
 
 There are 3 connections we need to make from the radiation detector board to the BPI-M2 ZERO. They are +5V and Ground (GND) for power, and the output pulse line to detect the count. Note that this is called `VIN` which can be a bit confusing as this usually means ‘voltage input’ or something similar, but on this board, it’s the output.
+![banana_cajoe](https://user-images.githubusercontent.com/78679055/230715723-68331fc5-69f9-4d39-9f9a-d4749de5759f.png)
 
 
 
