@@ -40,8 +40,8 @@ Just download [geiger.img](https://drive.google.com/file/d/1pP6zhLzigkKEu4Vl4GHI
 
   *sudo dd if=geiger.img of=/dev/mmcblkx*             
   
-  where wmmcblkx must be repalced with appropriate name of sdcard on Your system.
+  where wmmcblkx must be repalced with appropriate name of SD card on your system.
 
-Insert prepared SD card to Your BPI-M2 ZERO and plug power, system should start. After time You can configure geiger counter under Your neeeds trought console or via WiFi. If you use console just log in as root user. If you decide to use Wifi, wireless adapter on BPI-M2-ZERO is precongigured as AP (access point) with BSSID *geiger* and password *12345678*. just connect to this AP from your computer  and find out IP address of BPI-M2-ZERO from your DHCP server. Now you can use SSH client on your PC for login VPI-M2-ZERO.
-There are two system users defined. User *root* and user *geiger*. Both of them are set *bananapi* password.
+Insert prepared SD card to your BPI-M2 and plug power, system should start. After time You can configure geiger counter under Your neeeds trought console or via WiFi. If you use console just log in as root user. If you decide to use Wifi, wireless adapter on BPI-M2 is precongigured as AP (access point) with BSSID _**geiger**_ and password _**12345678**_. just connect to this AP from your computer  and find out IP address of BPI-M2 from your DHCP server. Now you can use SSH client on your PC for login BPI-M2.
+There are two system users defined. User _**root**_ and user _**geiger**_. Both of them are set _**bananapi**_ password.
 
