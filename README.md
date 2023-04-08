@@ -4,7 +4,7 @@
 
 A simple Python application to measure and record background radiation in your area. Radiation is detected with a cheaply available board, and connected to a Banana Pi M2 ZERO SBC (BPI-M2) to provide InfluxDB for datalogging and Grafana for pretty charts. Measured data are stored localy to BPI-M2.
 
-![grafana.jpg](https://github.com/lubomirkarlik/bananapi-radiation-monitor/blob/84982dac9634d71a96588a1a0aa980fe15ad04c2/grafana.jpg)
+![grafana.jpg](https://github.com/lubomirkarlik/bananapi-radiation-monitor/pict/grafana.jpg)
 
 
 ## Hardware requirements
