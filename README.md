@@ -38,5 +38,9 @@ You have two options. The first (preferred) is to download a prepared image with
 
 Just download [geiger.img](https://drive.google.com/file/d/1pP6zhLzigkKEu4Vl4GHI0awQZ6XYNu6-/view?usp=sharing) and burn it on the SD card. To do it, You need some suitable sotware to upload the img to the sd card, for example [BalenaEtcher](https://www.balena.io/etcher), or [Win32DiskImager](https://sourceforge.net/projects/win32diskimager/), or something similar, or the dd command in Linux CLI:
 
-  *sudo dd if=geiger.img of=/dev/mmcblkx*             ;  mmcblkx must be repalced with appropriate name of sdcard on Your system
+  *sudo dd if=geiger.img of=/dev/mmcblkx*             
+  
+  where wmmcblkx must be repalced with appropriate name of sdcard on Your system.
+
+Insert prepared SD card to Your BPI-M2 ZERO and plug power, system should start. After time You can configure geiger counter under Your neeeds. There are two system users defined. User *root* and user *geiger*. Both of them are set *bananapi* password.
 
