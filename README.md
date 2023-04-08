@@ -38,5 +38,5 @@ You have two options. The first (preferred) is to download a prepared image with
 
 Just download [geiger.img](https://drive.google.com/file/d/1pP6zhLzigkKEu4Vl4GHI0awQZ6XYNu6-/view?usp=sharing) and burn it on the SD card. To do it, You need some suitable sotware to upload the img to the sd card, for example [BalenaEtcher](https://www.balena.io/etcher), or [Win32DiskImager](https://sourceforge.net/projects/win32diskimager/), or something similar, or the dd command in Linux CLI:
 
-*  sudo dd if=geiger.img of=/dev/mmcblkx                     * ;  mmcblkx must be repalced with appropriate name of sdcard on Your system
+  *sudo dd if=geiger.img of=/dev/mmcblkx*             ;  mmcblkx must be repalced with appropriate name of sdcard on Your system
 
