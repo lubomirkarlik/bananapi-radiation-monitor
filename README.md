@@ -42,6 +42,20 @@ Just download [geiger.img](https://drive.google.com/file/d/1pP6zhLzigkKEu4Vl4GHI
   
   where wmmcblkx must be repalced with appropriate name of SD card on your system.
 
-Insert prepared SD card to your BPI-M2 and plug power, system should start. After time You can configure geiger counter under Your neeeds trought console or via WiFi. If you use console just log in as root user. If you decide to use Wifi, wireless adapter on BPI-M2 is precongigured as AP (access point) with BSSID _**geiger**_ and password _**12345678**_. just connect to this AP from your computer  and find out IP address of BPI-M2 from your DHCP server. Now you can use SSH client on your PC for login BPI-M2.
-There are two system users defined. User _**root**_ and user _**geiger**_. Both of them are set _**bananapi**_ password.
+Insert prepared SD card to your BPI-M2 and plug power, system should start. After time You can configure geiger counter under Your neeeds trought console or via WiFi. If you use console just log in as root user. If you decide to use Wifi, wireless adapter on BPI-M2 is precongigured as AP (access point) with BSSID _**geiger**_ and password _**12345678**_. just connect to this AP from your computer  and find out IP address of BPI-M2 from your DHCP server. Now you can use SSH client on your PC for login BPI-M2 on IP address 10.1.1.1.
+There are two system users defined. User _**root**_ and user _**pi**_. Both of them are set _**bananapi**_ password. After login , another steps are required. First of all:
+
+**Is strongly reccomended to change passwords after first login due to seccurity.**
+Using the utility *armbian*config* change your wireless mode to client and connect BPI-M2 to your existing wireless network as client, or change secrets in file */etc/hostapd/hostapd.conf*. If you change wireless mode to client do not forget stop and disable DHCP server service. You can do it by
+
+*systemctl disable isc-dhcp-server.service   
+systemctl stop isc-dhcp-server.service*
+
+Now is system ready to harwest radiation in your locality every minute and write values to the [InfluxDB database](https://docs.influxdata.com/influxdb/v1.8/) as time series. Predefined database is *geiger* and two users are defined to full database acccess. User *admin* with *admin* password and user *geiger* with password *geiger*.  
+
+Drawing graphs and visualization measurements are provided by [Grafana](https://grafana.com/). Just run internet any browser , e.g. in mobil phone an connest to:  
+*http://IP_address_BPI-M2:3000*  
+login screen appear. You can log in as user *admin* with password *admin* for full access rights, or as user *viever* with password *viewer* for view graps with restricted rights. 
+
+
 
