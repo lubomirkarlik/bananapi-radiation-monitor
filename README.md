@@ -74,4 +74,5 @@ Some of user parameters can be changed in */home/pi/geiger/config.py* file. You 
 * run application with *python3 counter.py*
 
 
-
+##  Disclaimers  
+You may use the program as is at your own risk, no updates or modifications to the code will be made, and no warranties or claims for damages will be made in connection with any use of this code.
