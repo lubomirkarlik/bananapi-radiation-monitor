@@ -2,11 +2,11 @@
 
 **Inspired by the raspberry PI project https://bigpi.vc/build-a-simple-radiation-monitor-using-a-raspberry-pi-influxdb-and-grafana/ .**
 
-A simple Python application to measure and record background radiation in your area. Radiation is detected with a cheaply available board, and connected to a Banana Pi M2 ZERO SBC (BPI-M2) to provide InfluxDB for data-logging and Grafana for pretty charts. Measured data are stored locally to BPI-M2.
-
 The main motivation for the implementation of this project was the lack of chips for the production Raspberry Pi boards. last but not least, their price. Most of Raspebrry Pi boards will be available maybe by the end of the year 2023, currently are out of stock over the world. 
 
-Banana Pi SBCs are compatible with Raspberry Pi SBC. But this is mostly only desire. The GPIO should be compatible with Raspberry Pi and can run Raspberry Pi images directly, but in my experience this is miles away from reality. GPIO hardware compatibility is very close to RaspberryPI, but some important libraries only support the BCM chips used in the manufacture of RaspberryPI boards and are not implementable on BananaPi. Anyway, for me are Bananapi SBCs very good, powerful and suitable product and the price-performance ratio is unprecedented.
+A simple Python application to measure,  record and track background radiation in your area. Radiation is detected with a low-cost Radiation board CAJOE , and connected to a Banana Pi M2 ZERO SBC (BPI-M2). The board feeds data into the InfluxDB. Grafana is used for log appealing log visualization. Measured data are stored locally on the BPI-M2.
+
+Banana Pi SBCs are supposed to be compatible with Raspberry Pi SBC. This happened not to be the case during the project. The GPIO should be compatible with Raspberry Pi and can run Raspberry Pi images directly, but it also did not appear to be true. GPIO hardware compatibility is very close to RaspberryPI, but some important libraries only support the BCM chips used in the manufacture of RaspberryPI boards and are not part of BananaPi. Despite this, bananapis SBCs are powerful, cost effective and suitable for the use case.
 
 ![grafana](https://user-images.githubusercontent.com/78679055/230712353-1ec9c31c-e732-4ce8-9bc1-b17426e671d7.jpg)
 
@@ -32,20 +32,22 @@ In this configuration you only need to provide 5 volt power to one of the two bo
 
 ## Software setup
 
-You have two options. The first (preferred) is to download a prepared image with preset values. Or install some debian based image on your BPI-M2 zero , install the necessary software components and run my python application, stored in src directory. The first option is the easiest.
+You have two options:
+ 1. Download a prepared image with preset values. 
+ 2. Install a debian based image on your BPI-M2 zero, then install necessary software components and run the python application, stored in src directory.
 
-### How to use image:
+### How to use the image:
 
-Just download [geiger.img](https://drive.google.com/file/d/1pP6zhLzigkKEu4Vl4GHI0awQZ6XYNu6-/view?usp=sharing) and burn it on the SD card. To do it, You need some suitable software to upload the img to the sd card, for example [BalenaEtcher](https://www.balena.io/etcher), or [Win32DiskImager](https://sourceforge.net/projects/win32diskimager/), or something similar, or the dd command in Linux CLI:
+Just download [geiger.img](https://drive.google.com/file/d/1pP6zhLzigkKEu4Vl4GHI0awQZ6XYNu6-/view?usp=sharing) and write it on the SD card. To do so, You need some suitable software to upload the img to the sd card, for example [BalenaEtcher](https://www.balena.io/etcher), or [Win32DiskImager](https://sourceforge.net/projects/win32diskimager/), or something similar, or the dd command in Linux CLI:
 
   *sudo dd if=geiger.img of=/dev/mmcblkx*             
   
   where mmcblkx must be replaced with appropriate name of SD card on your system.
 
-Insert prepared SD card to your BPI-M2 and plug power, system should start. After time You can configure geiger counter under Your needs trough console or via WiFi. If you use console just log in as root user. If you decide to use Wifi, wireless adapter on BPI-M2 is preconfigured as AP (access point) with BSSID _**geiger**_ and password _**12345678**_. just connect to this AP from your computer  and find out IP address of BPI-M2 from your DHCP server. Now you can use SSH client on your PC for login BPI-M2 on IP address 10.1.1.1.
+Insert prepared SD card to your BPI-M2 and plug power, system should start. After time You can configure geiger according to your needs trough console or via WiFi. If you use console just log in as root user. If you decide to use Wifi, wireless adapter on BPI-M2 is preconfigured as AP (access point) with BSSID _**geiger**_ and password _**12345678**_. just connect to this AP from your computer  and find out IP address of BPI-M2 from your DHCP server. Now you can use SSH client on your PC for login BPI-M2 on IP address 10.1.1.1.
 There are two system users defined. User _**root**_ and user _**pi**_. Both of them are set _**bananapi**_ password. After login , another steps are required. First of all:
 
-**Is strongly recommended to change passwords after first login due to security.**  
+**Change the passwords after first login due to security.**  
 
 Using the utility *armbian-config* change your wireless mode to client and connect BPI-M2 to your existing wireless network as client, or change secrets in file */etc/hostapd/hostapd.conf*. If you change wireless mode to client do not forget stop and disable DHCP server service. You can do it by
 
@@ -54,11 +56,11 @@ systemctl stop isc-dhcp-server.service*
 
 Now is system ready to harvest radiation in your locality every minute and write values to the [InfluxDB database](https://docs.influxdata.com/influxdb/v1.8/) as time series. Predefined database is *geiger* and two users are defined to full database access. User *admin* with *admin* password and user *geiger* with password *geiger*.  
 
-Drawing graphs and visualization measurements are provided by [Grafana](https://grafana.com/). Just run internet any browser , e.g. in mobile phone an connect to:   
+Drawing graphs and visualization measurements are provided by [Grafana](https://grafana.com/) reachable under:
 
 *http://IP_address_BPI-M2:3000*    
 
-login screen appear. You can log in as user *admin* with password *admin* for full access rights, or as user *viever* with password *viewer* for view graphs with restricted rights. 
+login screen appear. You can log in as user *admin* with password *admin* for full access rights, or as user *viewer* with password *viewer* for view graphs with restricted rights. 
 
 Some of user parameters can be changed in */home/pi/geiger/config.py* file. You can change measurement interval *geiger_measure_int* . Stored values is in seconds. Divider is value represent relation between CPM (count impulses per minute) value and uSiviert value and depend on used type of geiger tube. *geiger_gpio_line* is set to 6 and represent GPIO port on BPI-M2. You can change it under your needs, but keep in mind, **that port you choose must support hardware interrupt.**
 
