@@ -38,7 +38,7 @@ You have two options:
 
 ### How to use the image:
 
-Just download [geiger.img](https://drive.google.com/file/d/1pP6zhLzigkKEu4Vl4GHI0awQZ6XYNu6-/view?usp=sharing) and write it on the SD card. To do so, You need some suitable software to upload the img to the sd card, for example [BalenaEtcher](https://www.balena.io/etcher), or [Win32DiskImager](https://sourceforge.net/projects/win32diskimager/), or something similar, or the dd command in Linux CLI:
+Just download [geiger.img](https://www.dedeideas.eu/index.php/en-us/download/2-bananapi-radiation-monitor/23-geiger-image) from  [Dedeideas.eu](https://www.dedeideas.eu)and write it on the SD card. To do so, You need some suitable software to upload the img to the sd card, for example [BalenaEtcher](https://www.balena.io/etcher), or [Win32DiskImager](https://sourceforge.net/projects/win32diskimager/), or something similar, or the dd command in Linux CLI:
 
   *sudo dd if=geiger.img of=/dev/mmcblkx*             
   
